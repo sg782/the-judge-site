@@ -188,6 +188,22 @@ footer {
 .privacy-page section a { color: #e8e8e8; }
 
 @media (max-width: 650px) {
+  body:has(.screen) {
+    height: 100svh;
+    overflow: hidden;
+    display: grid;
+    grid-template-rows: 56px minmax(0, 1fr) 56px;
+  }
+
+  body:has(.screen) header,
+  body:has(.screen) footer {
+    height: 56px;
+  }
+
+  body:has(.screen) main {
+    min-height: 0;
+  }
+
   header,
   footer,
   .screen,
@@ -199,10 +215,12 @@ footer {
   }
 
   .screen {
+    height: 100%;
+    min-height: 0;
     grid-template-columns: 1fr;
     justify-items: center;
     align-content: center;
-    gap: 70px;
+    gap: clamp(28px, 6vh, 52px);
   }
 
   .appeal {
@@ -213,5 +231,18 @@ footer {
     text-align: center;
   }
 
-  .appeal p { margin-left: auto; margin-right: auto; }
+  .appeal p {
+    margin: 10px auto 18px;
+    font-size: clamp(23px, 7vw, 30px);
+  }
+
+  .note { margin-top: 14px; }
+}
+
+@media (max-width: 650px) and (max-height: 650px) {
+  .timer { font-size: 64px; }
+  .ruling { font-size: 17px; }
+  .appeal { padding-top: 18px; }
+  .appeal p { margin-bottom: 12px; }
+  .appeal a { padding: 10px 14px; }
 }
