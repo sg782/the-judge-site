@@ -1,51 +1,65 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <link rel="stylesheet" href="https://googleapis.com">
-    <link rel="stylesheet" href="styles.css">
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
-    
+    <meta name="description" content="The Judge helps you take back your screen time.">
+    <link rel="stylesheet" href="styles.css">
+    <title>The Judge | Your screen time is on trial.</title>
 </head>
 <body>
-    <div id="main-container">
+    <header>
+        <span>The Judge</span>
+        <a href="privacy.html">Privacy</a>
+    </header>
 
-        <div id="header">
-            <div class="header-item">
-                Privacy Statement
+    <main>
+        <section class="screen">
+            <div class="case">
+                <p class="ruling">The Judge has spoken.</p>
+                <p class="timer" aria-label="No screen time remaining">00:00</p>
+                <p class="note">Your daily screen time is up.</p>
             </div>
 
-            <div class="header-item">
-                Contact
+            <div class="appeal">
+                <span>Need more time?</span>
+                <p>Make your case to The Judge.</p>
+                <a href="#">Join the Android beta</a>
             </div>
+        </section>
+    </main>
 
-            <div class="header-item">
-                About
-            </div>
+    <footer>
+        <span>Do something else.</span>
+        <a href="contact.html">Contact</a>
+    </footer>
+    <script>
+        const timer = document.querySelector(".timer");
+        const duration = 500;
+        const start = performance.now();
 
-           
-            
-        </div>
+        function countDown(now) {
+            const progress = Math.min((now - start) / duration, 1);
+            const eased = 1 - Math.pow(1 - progress, 3);
+            const seconds = Math.ceil(600 * (1 - eased));
+            const minutes = Math.floor(seconds / 60);
+            const remainder = seconds % 60;
 
-        <div id="app-name">
-            The Judge has spoken. 
-        </div>
+            timer.textContent = `${String(minutes).padStart(2, "0")}:${String(remainder).padStart(2, "0")}`;
 
-        <div id="subheader-cta">
+            if (progress < 1) {
+                requestAnimationFrame(countDown);
+            } else {
+                timer.textContent = "00:00";
+            }
+        }
 
-            Beta testing available NOW!!
-            <!-- Download the judge July 1st. -->
-            <div id="download-links">
-                <a href="/" tabIndex="0"><img class="bn45" src="https://upload.wikimedia.org/wikipedia/commons/7/78/Google_Play_Store_badge_EN.svg" alt="bn45"/></a>
-                <!-- <a href="/" tabIndex="0"><img class="bn46" src="https://developer.apple.com/assets/elements/badges/download-on-the-app-store.svg"alt="bn45"/></a> -->
-
-            </div>
-        </div>
-
-
-        
-    </div>
-    
+        if (window.matchMedia("(prefers-reduced-motion: reduce)").matches) {
+            timer.textContent = "00:00";
+        } else {
+            timer.textContent = "10:00";
+            requestAnimationFrame(countDown);
+        }
+    </script>
 </body>
 </html>
