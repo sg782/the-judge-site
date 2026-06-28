@@ -139,6 +139,64 @@ footer {
 .contact-list dt { color: #666; }
 .contact-list a:hover { text-decoration: underline; }
 
+.beta-page {
+  width: calc(100% - 48px);
+  margin: 0 auto;
+  padding-top: 48px;
+}
+
+.beta-page h1 {
+  margin: 0 0 36px;
+  font-size: 18px;
+  font-weight: 600;
+}
+
+.beta-form {
+  width: min(420px, 100%);
+}
+
+.beta-form label {
+  display: block;
+  margin-bottom: 20px;
+  color: #666;
+  font-size: 13px;
+}
+
+.beta-form input,
+.beta-form textarea {
+  width: 100%;
+  margin-top: 8px;
+  padding: 12px;
+  border: 1px solid #292929;
+  border-radius: 7px;
+  background: #050505;
+  color: #e8e8e8;
+  font: inherit;
+  resize: vertical;
+}
+
+.beta-form input:focus,
+.beta-form textarea:focus {
+  outline: none;
+  border-color: #777;
+}
+
+.beta-form button {
+  padding: 13px 16px;
+  border: 1px solid #555;
+  border-radius: 7px;
+  background: transparent;
+  color: #e8e8e8;
+  font: inherit;
+  font-size: 13px;
+  cursor: pointer;
+}
+
+.beta-form button:hover {
+  background: #fff;
+  color: #000;
+}
+
 .privacy-page {
   width: min(620px, calc(100% - 48px));
   margin: 0 0 80px 24px;
@@ -207,7 +265,8 @@ footer {
   header,
   footer,
   .screen,
-  .contact-page { width: calc(100% - 32px); }
+  .contact-page,
+  .beta-page { width: calc(100% - 32px); }
 
   .privacy-page {
     width: calc(100% - 32px);
